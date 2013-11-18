@@ -168,9 +168,11 @@ sub process_layer {
                 if ($Slic3r::Config->infill_first
                     || ($self->gcodegen->multiple_extruders && $region->extruders->{infill} eq $self->gcodegen->extruder) && $region->extruders->{infill} ne $region->extruders->{perimeter}) {
                     $gcode .= $self->_extrude_infill($island, $region);
+                    $gcode .= $Slic3r::Config->midlayer_gcode . "\n" if $Slic3r::Config->midlayer_gcode;
                     $gcode .= $self->_extrude_perimeters($island, $region);
                 } else {
                     $gcode .= $self->_extrude_perimeters($island, $region);
+                    $gcode .= $Slic3r::Config->midlayer_gcode . "\n" if $Slic3r::Config->midlayer_gcode;
                     $gcode .= $self->_extrude_infill($island, $region);
                 }
             }

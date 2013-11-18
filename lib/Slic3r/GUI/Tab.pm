@@ -715,6 +715,11 @@ sub build {
             options => [qw(layer_gcode)],
         },
         {
+            title => 'Mid-Layer change G-code',
+            no_labels => 1,
+            options => [qw(midlayer_gcode)],
+        },
+        {
             title => 'Tool change G-code',
             no_labels => 1,
             options => [qw(toolchange_gcode)],

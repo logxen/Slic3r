@@ -836,6 +836,18 @@ END
         deserialize => sub { join "\n", split /\\n/, $_[0] },
         default => '',
     },
+    'midlayer_gcode' => {
+        label   => 'Mid-Layer change G-code',
+        tooltip => 'This custom code is inserted in between perimeter and infill of each layer. Note that you can use placeholder variables for all Slic3r settings.',
+        cli     => 'midlayer-gcode=s',
+        type    => 's',
+        multiline => 1,
+        full_width => 1,
+        height  => 50,
+        serialize   => sub { join '\n', split /\R+/, $_[0] },
+        deserialize => sub { join "\n", split /\\n/, $_[0] },
+        default => '',
+    },
     'toolchange_gcode' => {
         label   => 'Tool change G-code',
         tooltip => 'This custom code is inserted at every extruder change. Note that you can use placeholder variables for all Slic3r settings as well as [previous_extruder] and [next_extruder].',
